@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahel Meubel & Elektronik</title>
+
+    <!-- Font & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        background-color: #efe8dc;
+        color: #3b2b22;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #6b3e26;
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        font-size: 1.2em;
+      }
+
+      nav {
+        background-color: #a47148;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #ffe9c7;
+      }
+
+      section {
+        padding: 60px 20px;
+        text-align: center;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      /* Kategori */
+      .katalog-category {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .category-card {
+        background-color: #fff;
+        border-radius: 10px;
+        width: 200px;
+        padding: 20px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        background-color: #f5f0e6;
+      }
+
+      /* Produk */
+      .produk-list {
+        display: none;
+        margin-top: 40px;
+      }
+
+      .produk-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .produk-item {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .produk-item:hover {
+        transform: scale(1.02);
+      }
+
+      .produk-item img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover; /* proporsional */
+        display: block;
+      }
+
+      .produk-item h4 {
+        margin: 10px 0 5px;
+        color: #6b3e26;
+      }
+
+      .produk-item p {
+        font-size: 0.95em;
+        color: #5b4632;
+      }
+
+      .btn-wa {
+        display: inline-block;
+        background: #25d366;
+        color: white;
+        padding: 8px 15px;
+
+        border-radius: 20px;
+        text-decoration: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        transition: 0.3s;
+      }
+
+      .btn-wa:hover {
+        background: #1ebe5d;
+        transform: scale(1.05);
+      }
+
+      /* Kontak */
+      iframe {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      .social-links {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .social-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        flex: 1 1 200px; /* agar responsif */
+        min-width: 180px;
+        max-width: 250px;
+        text-align: center;
+      }
+
+      .social-btn img {
+        width: 22px;
+        height: 22px;
+      }
+
+      /* Warna dan hover */
+      .whatsapp-btn {
+        background-color: #25d366;
+      }
+      .whatsapp-btn:hover {
+        background-color: #1ebe57;
+        transform: translateY(-3px);
+      }
+
+      .facebook-btn {
+        background-color: #1877f2;
+      }
+      .facebook-btn:hover {
+        background-color: #0d65d9;
+        transform: translateY(-3px);
+      }
+
+      .tiktok-btn {
+        background-color: #000000;
+      }
+      .tiktok-btn:hover {
+        background-color: #1a1a1a;
+        transform: translateY(-3px);
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        .social-btn {
+          flex: 1 1 100%;
+          font-size: 14px;
+          padding: 12px;
+        }
+
+        .social-links {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .social-btn img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background-color: #6b3e26;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        margin-top: 60px;
+      }
+
+      /* 🎨 Sosial Media */
+      
+
+      .fa-facebook {
+        color: #1877f2;
+      }
+      .fa-whatsapp {
+        color: #25d366;
+      }
+      .fa-tiktok {
+        color: #000000;
+      }
+      .fa-shopee {
+        color: #ff6600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Rahel Meubel & Elektronik</h1>
+      <p>Furnitur Hangat, Klasik, dan Elegan untuk Rumah Anda</p>
+    </header>
+
+    <nav>
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#kontak">Kontak Kami</a>
+    </nav>
+
+    <!-- Tentang -->
+    <section id="tentang">
+      <h2>Tentang Kami</h2>
+      <p>
+        Meubel Rachel menghadirkan furnitur kayu berkualitas tinggi yang
+        memadukan desain klasik dan modern, memberikan nuansa hangat dan elegan
+        di setiap rumah.
+      </p>
+    </section>
+
+    <!-- Katalog -->
+    <section id="katalog">
+      <h2>Katalog Produk</h2>
+      <div class="katalog-category">
+        <div class="category-card" onclick="showProduk('lemari')">
+          🪞 Lemari
+        </div>
+        <div class="category-card" onclick="showProduk('meja')">🪑 Meja</div>
+        <div class="category-card" onclick="showProduk('kursi')">🛋️ Kursi</div>
+        <div class="category-card" onclick="showProduk('kulkas')">
+          🗄️ Kulkas
+        </div>
+        <div class="category-card" onclick="showProduk('mesincuci')">
+          🗄️ Mesin Cuci
+        </div>
+      </div>
+
+      <!-- Lemari -->
+      <div id="lemari" class="produk-list">
+        <h3>Koleksi Lemari</h3>
+        <div class="produk-grid">
+          <div class="produk-item">
+            <img src="assets/lemari.jpg" alt="Lemari Jati" />
+            <h4>Lemari Jati Klasik</h4>
+            <p>
+              Desain klasik dengan kayu jati solid, cocok untuk kamar atau ruang
+              tamu.
+            </p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Lemari%20Jati%20Klasik."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+
+          <div class="produk-item">
+            <img
+              src="https://via.placeholder.com/250x200?text=Lemari+Minimalis"
+              alt="Lemari Minimalis"
+            />
+            <h4>Lemari Minimalis</h4>
+            <p>
+              Lemari dengan gaya minimalis modern dan bahan kayu ringan
+              berkualitas.
+            </p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Lemari%20Minimalis."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Meja -->
+      <div id="meja" class="produk-list">
+        <h3>Koleksi Meja</h3>
+        <div class="produk-grid">
+          <div class="produk-item">
+            <img
+              src="assets/658598f1da3f457fdbee4ed98ba7c716.jpg"
+              alt="Meja Makan"
+            />
+            <h4>Meja Makan Rustic</h4>
+            <p>
+              Meja makan dengan tekstur kayu alami, ideal untuk keluarga besar.
+            </p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Meja%20Makan%20Rustic."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Kursi -->
+      <div id="kursi" class="produk-list">
+        <h3>Koleksi Kursi</h3>
+        <div class="produk-grid">
+          <div class="produk-item">
+            <img
+              src="assets/658598f1da3f457fdbee4ed98ba7c716.jpg"
+              alt="Kursi Tamu"
+            />
+            <h4>Kursi Tamu Elegan</h4>
+            <p>Kursi tamu dengan bantalan empuk dan desain klasik elegan.</p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kursi%20Tamu%20Elegan."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Kulkas -->
+      <div id="kulkas" class="produk-list">
+        <h3>Koleksi Kulkas</h3>
+        <div class="produk-grid">
+          <div class="produk-item">
+            <img src="assets/kulkas polytron.png" alt="Polytron" />
+            <h4>Kulkas Polytron 2 Pintu</h4>
+            <p>Kulkas hemat energi dengan desain elegan dan kapasitas besar.</p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kulkas%20Polytron."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+          <div class="produk-item">
+            <img src="assets/sanken kulkas big.jpg" alt="Polytron" />
+            <h4>Kulkas Polytron 2 Pintu</h4>
+            <p>Kulkas hemat energi dengan desain elegan dan kapasitas besar.</p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kulkas%20Polytron."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+
+          <div class="produk-item">
+            <img src="assets/kulkas sanken.jpg" alt="Polytron" />
+            <h4>Kulkas Polytron Classic</h4>
+            <p>
+              Kulkas bergaya klasik dengan material kokoh dan tampilan premium.
+            </p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kulkas%20Polytron%20Classic."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+      <div id="mesincuci" class="produk-list">
+        <h3>Koleksi Mesin Cuci</h3>
+        <div class="produk-grid">
+          <div class="produk-item">
+            <img src="assets/kulkas polytron.png" alt="Polytron" />
+            <h4>Kulkas Polytron 2 Pintu</h4>
+            <p>Kulkas hemat energi dengan desain elegan dan kapasitas besar.</p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kulkas%20Polytron."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+          <div class="produk-item">
+            <img src="assets/sanken kulkas big.jpg" alt="Polytron" />
+            <h4>Kulkas Polytron 2 Pintu</h4>
+            <p>Kulkas hemat energi dengan desain elegan dan kapasitas besar.</p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kulkas%20Polytron."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+
+          <div class="produk-item">
+            <img src="assets/kulkas sanken.jpg" alt="Polytron" />
+            <h4>Kulkas Polytron Classic</h4>
+            <p>
+              Kulkas bergaya klasik dengan material kokoh dan tampilan premium.
+            </p>
+            <a
+              class="btn-wa"
+              href="https://wa.me/6281909099777?text=Halo%20Meubel%20Rachel,%20saya%20ingin%20pesan%20Kulkas%20Polytron%20Classic."
+              >Pesan via WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak">
+      <h2>Hubungi Kami</h2>
+      <p>📍 Montong Gamang, Lombok Tengah</p>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15778.40602799565!2d116.35744571685788!3d-8.634199077189184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdb04d781e49e1%3A0x5a8ed7a9314901a9!2sMeubel%20Rahel!5e0!3m2!1sid!2sid!4v1762139136006!5m2!1sid!2sid"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+
+      <div class="social-links">
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/6281909099777"
+          target="_blank"
+          class="social-btn whatsapp-btn"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+            alt="WhatsApp"
+          />
+          +62 819-0909-9777
+        </a>
+
+        <!-- Facebook -->
+        <a
+          href="https://facebook.com/namabisnis"
+          target="_blank"
+          class="social-btn facebook-btn"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+            alt="Facebook"
+          />
+          Meubel Rahel
+        </a>
+
+        <!-- TikTok -->
+        <a
+          href="https://www.tiktok.com/@namabisnis"
+          target="_blank"
+          class="social-btn tiktok-btn"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
+            alt="TikTok"
+          />
+          @meubelrachel
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Meubel Rachel | Dibuat dengan ❤️ dari kayu pilihan</p>
+    </footer>
+
+    <script>
+      function showProduk(id) {
+        const sections = document.querySelectorAll(".produk-list");
+        sections.forEach((sec) => (sec.style.display = "none"));
+        document.getElementById(id).style.display = "block";
+        window.scrollTo({
+          top: document.getElementById(id).offsetTop - 80,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
+</html>
